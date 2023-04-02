@@ -1,0 +1,24 @@
+import mysql.connector
+import serial
+import time
+
+# connect to the database
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="username",
+  password="password",
+  database="database_name"
+)
+mycursor = mydb.cursor()
+
+# connect to the RFID reader
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+
+# continuously read the RFID tags and update the database
+while True:
+  id = ser.readline().strip().decode()
+  if id:
+    # get the current time
+    now = time.strftime('%Y-%m-%d %H:%M:%S')
+
+    # update the database with the last
