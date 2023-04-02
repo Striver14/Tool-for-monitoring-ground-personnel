@@ -1,0 +1,26 @@
+// fetch data from the server using AJAX
+function fetchData() {
+  // make an AJAX request to the server to get the data
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'get_data.php');
+  xhr.onload = function() {
+    if (xhr.status === 200) {
+      // parse the JSON data and populate the table
+      const data = JSON.parse(xhr.responseText);
+      const table = document.querySelector('table');
+      data.forEach(function(row) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${row.officer_id}</td>
+          <td>${row.last_seen}</td>
+          <td>${row.status}</td>
+        `;
+        table.appendChild(tr);
+      });
+    }
+  };
+  xhr.send();
+}
+
+// fetch the data every 10 seconds
+setInterval(fetchData, 10000);
