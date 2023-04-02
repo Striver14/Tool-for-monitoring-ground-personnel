@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Remote Police Officer Tracking System</title>
+</head>
+<body>
+  <h1>Remote Police Officer Tracking System</h1>
+  <table>
+    <tr>
+      <th>Officer ID</th>
+      <th>Last seen</th>
+      <th>Status</th>
+    </tr>
+    <!-- populate the table with data from the database using JavaScript -->
+  </table>
+</body>
+</html>
